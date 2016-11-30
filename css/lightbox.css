@@ -1,0 +1,89 @@
+@charset"utf-8";
+/*样式重置*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content: ;}
+abbr,acronym{border:0;}
+body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,arial,'Hiragino Sans GB',宋体,sans-serif;}
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix {zoom:1;}	
+.text-ellipsis{white-space: nowrap;/*设置不折行*/text-overflow: ellipsis;/*省略号*/-o-text-overflow:ellipsis;/*兼容opera*/overflow: hidden;/*设置超过的隐藏*/}
+
+/*lightbox图片样式*/
+#G-lightbox-mask{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.5;
+	filter:alpha(opacity=50%); /*IE8 以及更早的版本使用滤镜 filter:alpha(opacity=x)。x 能够取的值从 0 到 100。值越小，越透明。*/
+	z-index: 10000;
+}
+#G-lightbox-popup{
+	position: fixed;
+	width: 300px;
+
+	left: 50%;
+	margin-left: -150px;
+	z-index: 10001;
+}
+#G-lightbox-popup .lightbox-pic-view{
+	border:5px solid #fff;
+	position: relative;
+	border-radius: 3px;
+	background-color: #fff;
+	overflow: hidden;
+	background:url(../icon/loading.gif) no-repeat center center;
+}
+.lightbox-pic-view img{
+	display: block;
+}
+#G-lightbox-popup .lightbox-pic-view .lightbox-btn{
+	position: absolute;
+	top:0;
+	width: 40%;
+	z-index: 1;
+	height: 100%;
+}
+#G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn{
+	left: 0;
+}
+#G-lightbox-popup .lightbox-pic-view .lightbox-next-btn{
+	right: 0;
+}
+#G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn-show{
+	background:url(../icon/prev.png) no-repeat left center;
+	cursor: pointer;
+}
+#G-lightbox-popup .lightbox-pic-view .lightbox-next-btn-show{
+	background:url(../icon/next.png) no-repeat right center;
+	cursor: pointer;
+}
+#G-lightbox-popup .lightbox-pic-caption{
+	position: relative;
+	background-color:rgba(0,0,0,0.5);
+	margin: 0 5px;
+	margin-top: -60px;
+}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{
+	color: #fff;
+	padding: 10px 5px;	
+}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area .lightbox-of-index{
+	color: #999;
+}
+#G-lightbox-popup .lightbox-pic-caption .lightbox-close-btn{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 27px;
+	height: 27px;
+	background: url(../icon/close.png) no-repeat center center;
+}
