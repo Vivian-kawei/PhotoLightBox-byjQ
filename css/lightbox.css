@@ -25,22 +25,24 @@ body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,aria
 	opacity: 0.5;
 	filter:alpha(opacity=50%); /*IE8 以及更早的版本使用滤镜 filter:alpha(opacity=x)。x 能够取的值从 0 到 100。值越小，越透明。*/
 	z-index: 10000;
+	display: none;
 }
 #G-lightbox-popup{
 	position: fixed;
 	width: 300px;
-
+	background-color: #fff;
 	left: 50%;
 	margin-left: -150px;
 	z-index: 10001;
+	display: none;
 }
 #G-lightbox-popup .lightbox-pic-view{
 	border:5px solid #fff;
 	position: relative;
-	border-radius: 3px;
-	background-color: #fff;
+	border-radius: 3px;	
 	overflow: hidden;
 	background:url(../icon/loading.gif) no-repeat center center;
+	background-color: #fff;
 }
 .lightbox-pic-view img{
 	display: block;

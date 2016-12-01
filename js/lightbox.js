@@ -7,10 +7,21 @@
 		//创建遮罩和弹出框
 		this.popupMask=$('<div id="G-lightbox-mask">');
 		this.popupWin=$('<div id="G-lightbox-popup">');
+
 		//保存body
 		this.bodyNode=$(document.body);
+
 		//调用方法渲染剩余的dom,并插入body
-		//this.renderDOM();
+		this.renderDOM();
+
+		this.picViewArea = this.popupWin.find('div.lightbox-pic-view');//图片预览区域
+		this.popupPic = this.popupWin.find('img.lightbox-image');//图片
+		this.picCaptionArea = this.popupWin.find('div.lightbox-pic-caption');//图片描述
+		this.nextBtn = this.popupWin.find('span.lightox-next-btn');
+		this.prevBtn = this.popupWin.find('span.lightbox-prev-btn');
+		this.caption = this.popupWin.find('p.lightbox-pic-desc');//图片标题
+		this.currentIndex = this.popupWin.find('span.lightbox-of-index');//当前索引
+		this.closeBtn = this.popupWin.find('span.lightbox-close-btn');//关闭按钮
 
 		//在body中进行事件委托，获取组数据
 		this.groupName = null;//定义组别
@@ -31,13 +42,54 @@
 				self.groupName = currentGroupName;
 				//根据当前的组名获取同一组数据
 				self.getGroup();
-			}
+			};
+				//初始化弹框,把需要的参数传过去
+				self.initPopup($(this));
 
 		});
 
 
 	};
 	LightBox.prototype={
+		showMaskAndPopup:function(sourceSrc,currentId){
+			var self = this;
+
+			//隐藏内容
+			this.popupPic.hide();
+			this.picCaptionArea.hide();
+
+			//淡出遮罩层
+			this.popupMask.fadeIn();
+			//获取当前视口大小  弹出层初始宽高设为当前视口宽高的一半
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			this.picViewArea.css({
+				width:winWidth/2,
+				height:winHeight/2
+			});
+			this.popupWin.fadeIn();
+
+			var viewHeight = winHeight/2+10;
+			this.popupWin.css({
+				width:winWidth/2+10,//+10 是为了保留5px border
+				height:viewHeight,
+				marginLeft:-(winWidth/2+10)/2,
+				top:-viewHeight,
+			}).animate({
+				top:(winHeight-viewHeight)/2//垂直居中
+			},function(){//进行回调
+
+			});
+		},
+
+		initPopup:function(currentObj){
+			var self = this;
+			var sourceSrc = currentObj.attr("data-source");
+				currentId = currentObj.attr("data-id");
+			//调用方法显示
+			this.showMaskAndPopup(sourceSrc,currentId);
+		},
+
 		
 		getGroup:function(){
 			var self =this;
