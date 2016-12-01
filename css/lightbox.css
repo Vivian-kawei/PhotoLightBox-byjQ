@@ -26,6 +26,7 @@ body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,aria
 	filter:alpha(opacity=50%); /*IE8 以及更早的版本使用滤镜 filter:alpha(opacity=x)。x 能够取的值从 0 到 100。值越小，越透明。*/
 	z-index: 10000;
 	display: none;
+	background:url(../icon/opacity.png) repeat left top;
 }
 #G-lightbox-popup{
 	position: fixed;
@@ -53,12 +54,15 @@ body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,aria
 	width: 40%;
 	z-index: 1;
 	height: 100%;
+	background:url(../icon/transparent.png) repeat left top;/*解决在IE中不定义背景的控件所绑定的事件没办法触发的bug 添加一张透明的图*/
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn{
 	left: 0;
+	z-index: 1;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-next-btn{
 	right: 0;
+	z-index: 1;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn-show{
 	background:url(../icon/prev.png) no-repeat left center;
@@ -73,6 +77,7 @@ body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,aria
 	background-color:rgba(0,0,0,0.5);
 	margin: 0 5px;
 	margin-top: -60px;
+	background:url(../icon/opacity.png) repeat left top;
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{
 	color: #fff;
@@ -88,4 +93,5 @@ body{color:#666; background-color:#fff;font: 12px/1.5 '微软雅黑',tahoma,aria
 	width: 27px;
 	height: 27px;
 	background: url(../icon/close.png) no-repeat center center;
+	z-index: 2;
 }
