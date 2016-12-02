@@ -1,8 +1,14 @@
 ;(function($){
 
-	var LightBox = function(){
+	var LightBox = function(settings){
 		//保存LightBox
 		var self = this;
+
+		//默认参数
+		this.settings = {
+			speed:500,//加载切换速度
+		};
+		$.extend(this.settings,settings);
 
 		//创建遮罩和弹出框
 		this.popupMask=$('<div id="G-lightbox-mask">');
@@ -106,9 +112,18 @@
 			timer = window.setTimeout(function(){
 				self.loadPicSize(self.groupData[self.index].src);
 			},500);
+			};			
+		}).keyup(function(e){//绑定键盘事件 实现点击键盘切换
+			var keyValue = e.which;
+			//console.log(keyValue);上=38 左=37 右=39 下=40
+			if(self.clear){
+				if(keyValue == 38 || keyValue == 37){
+					self.prevBtn.click();
+				}else if(keyValue == 40 || keyValue == 39){
+					self.nextBtn.click();
+				};
 			};
-			
-			
+
 		});
 
 	};
@@ -174,13 +189,13 @@
 			this.picViewArea.animate({
 				width:width-10,
 				height:height-10
-			});
+			},self.settings.speed);
 			this.popupWin.animate({
 				width:width,
 				height:height,
 				marginLeft:-width/2,
 				top:(winHeight-height)/2
-			},function(){//过渡执行完毕后
+			},self.settings.speed,function(){//过渡执行完毕后
 				self.popupPic.css({//images
 					width:width-10,
 					height:height-10,
@@ -241,7 +256,7 @@
 				top:-viewHeight,
 			}).animate({
 				top:(winHeight-viewHeight)/2//垂直居中
-			},function(){//进行回调 加载图片
+			},self.settings.speed,function(){//进行回调 加载图片
 				self.loadPicSize(sourceSrc);//获取图片实际大小
 			});
 
